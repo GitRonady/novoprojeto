@@ -50,14 +50,22 @@ async function chamarFluxo(payload, url) {
 }
 
 // ===== NORMALIZAÇÃO DOS ITENS =====
-function normalizar(item) {
+ffunction normalizar(item) {
   const sit = String(texto(pegar(item, ['Situacao', 'situacao', 'Status', 'status']))).trim().toLowerCase();
   let grupo = 'pend';
   if (sit === 'finalizado' || sit === 'concluído' || sit === 'concluido') grupo = 'fim';
   else if (sit === 'em andamento') grupo = 'and';
 
-  const criado = String(pegar(item, ['criadoEm', 'CriadoEm', 'Data', 'Created', 'Criado']));
-  const d = new Date(criado);
+  // Busca ESTRITAMENTE a data de criação, sem pegar as datas do plano
+  const criado = String(pegar(item, ['criadoEm', 'CriadoEm', 'Created', 'Criado', 'DataCriacao', 'DataAbertura']));
+  let mes = '';
+  if (criado && criado !== 'Invalid Date') {
+    const d = new Date(criado);
+    if (!isNaN(d.getTime())) {
+      mes = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0');
+    }
+  }
+
   return {
     id: String(pegar(item, ['idFormulario', 'IDFormulario']) || pegar(item, ['ID', 'id']) || ''),
     problema: texto(pegar(item, ['Problema', 'problema'])),
@@ -65,7 +73,7 @@ function normalizar(item) {
     area: texto(pegar(item, ['Area', 'area', 'Área'])),
     responsavel: texto(pegar(item, ['Responsavel', 'responsavel', 'Responsável'])),
     grupo,
-    mes: isNaN(d) ? '' : d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'),
+    mes,
     prevFim: soData(pegar(item, ['DataPrevisaoConclusao', 'dataPrevisaoConclusao', 'PrevisaoConclusao', 'Prazo', 'prazo']))
   };
 }
