@@ -1,0 +1,60 @@
+/* Complementa o estilo.css (usa as mesmas variáveis) */
+.dash { max-width: 1160px; margin: 0 auto; }
+.dash > .cabecalho { border-radius: 14px 14px 0 0; }
+.dash a.b-sair { text-decoration: none; }
+
+.dash-filtros {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  background: var(--superficie); border: 1px solid var(--borda); border-top: none;
+  padding: 14px 18px 4px; border-radius: 0 0 14px 14px; box-shadow: var(--sombra); margin-bottom: 16px;
+}
+@media (max-width: 700px) { .dash-filtros { grid-template-columns: 1fr; gap: 0; } }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+.kpi { background: var(--superficie); border: 1px solid var(--borda); border-top: 4px solid var(--borda-forte); border-radius: var(--raio); padding: 14px 16px; box-shadow: var(--sombra); }
+.kpi small { display: block; color: var(--suave); font-size: 12px; font-weight: 600; }
+.kpi strong { display: block; font-size: 30px; line-height: 1.15; font-weight: 700; }
+.kpi.total { border-top-color: var(--azul); }
+.kpi.pend { border-top-color: #e0a100; } .kpi.pend strong { color: var(--laranja); }
+.kpi.and { border-top-color: var(--destaque); } .kpi.and strong { color: var(--destaque); }
+.kpi.fim { border-top-color: var(--verde); } .kpi.fim strong { color: var(--verde); }
+.kpi.atr { border-top-color: var(--vermelho); } .kpi.atr strong { color: var(--vermelho); }
+
+.grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
+@media (max-width: 800px) { .grade { grid-template-columns: 1fr; } }
+.cartao { background: var(--superficie); border: 1px solid var(--borda); border-radius: var(--raio); padding: 16px 18px; box-shadow: var(--sombra); }
+.cartao h3 { margin: 0 0 14px; font-size: 15px; font-weight: 700; }
+
+/* Donut */
+.donut-box { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.donut { width: 140px; height: 140px; border-radius: 50%; display: grid; place-items: center; background: var(--borda); position: relative; }
+.donut::after { content: ""; position: absolute; inset: 24px; background: #fff; border-radius: 50%; }
+.donut span { position: relative; z-index: 1; font-size: 24px; font-weight: 700; }
+.legenda { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 13px; }
+.legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; }
+
+/* Barras horizontais empilhadas */
+.barras { display: grid; gap: 10px; }
+.barra-linha { display: grid; grid-template-columns: 90px 1fr 34px; align-items: center; gap: 10px; font-size: 12px; }
+.barra-linha .nome { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.barra-trilho { display: flex; height: 14px; background: var(--fundo); border-radius: 999px; overflow: hidden; }
+.barra-trilho span { display: block; height: 100%; }
+.barra-linha .num { text-align: right; color: var(--suave); font-weight: 600; }
+
+/* Colunas por mês */
+.colunas { display: flex; align-items: flex-end; gap: 10px; height: 160px; padding-top: 8px; }
+.coluna { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; font-size: 11px; color: var(--suave); }
+.coluna .pilar { width: 100%; max-width: 38px; background: var(--azul); border-radius: 6px 6px 0 0; min-height: 2px; }
+.coluna b { color: var(--texto); font-size: 12px; margin-bottom: 3px; }
+.coluna em { font-style: normal; margin-top: 5px; }
+
+/* Tabela */
+.tabela-wrap { overflow-x: auto; }
+.tabela { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tabela th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--suave); padding: 8px 10px; border-bottom: 2px solid var(--borda); white-space: nowrap; }
+.tabela td { padding: 9px 10px; border-bottom: 1px solid var(--borda); vertical-align: top; }
+.tabela tr:hover td { background: var(--fundo); }
+.tabela td.prob { min-width: 220px; }
+.tabela .vazio-td { text-align: center; color: var(--suave); padding: 18px; }
+
+.leg-pend { background: #e0a100; } .leg-and { background: var(--destaque); } .leg-fim { background: var(--verde); }

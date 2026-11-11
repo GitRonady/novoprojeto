@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - Plano de Ação TC</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dash">
+    <header class="cabecalho">
+      <h1>Dashboard - Plano de Ação TC</h1>
+      <div class="cabecalho-acoes">
+        <span id="usuarioLogado" class="usuario-logado"></span>
+        <a href="index.html" class="b-sair">
+          <svg class="ic" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+          Formulário
+        </a>
+        <button type="button" class="b-sair" id="btnAtualizar">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg>
+          Atualizar
+        </button>
+      </div>
+    </header>
+
+    <div class="dash-filtros">
+      <div class="campo" id="boxRegional">
+        <label for="fRegional">Regional</label>
+        <select id="fRegional"><option value="">Todas</option></select>
+      </div>
+      <div class="campo">
+        <label for="fArea">Área</label>
+        <select id="fArea"><option value="">Todas</option></select>
+      </div>
+      <div class="campo">
+        <label for="fBusca">Buscar</label>
+        <input type="search" id="fBusca" placeholder="Problema, responsável ou ID...">
+      </div>
+    </div>
+
+    <p id="dashMsg" class="vazio">Carregando...</p>
+
+    <main id="dashConteudo" hidden>
+      <section class="kpis" id="kpis"></section>
+
+      <section class="grade">
+        <article class="cartao">
+          <h3>Situação geral</h3>
+          <div class="donut-box">
+            <div class="donut" id="donut"><span id="donutTxt"></span></div>
+            <ul class="legenda" id="legendaDonut"></ul>
+          </div>
+        </article>
+        <article class="cartao">
+          <h3>Por regional</h3>
+          <div id="graficoRegional" class="barras"></div>
+        </article>
+        <article class="cartao">
+          <h3>Por área responsável</h3>
+          <div id="graficoArea" class="barras"></div>
+        </article>
+        <article class="cartao">
+          <h3>Abertas por mês</h3>
+          <div id="graficoMes" class="colunas"></div>
+        </article>
+      </section>
+
+      <section class="cartao">
+        <h3>Planos atrasados e com prazo próximo (7 dias)</h3>
+        <div class="tabela-wrap">
+          <table class="tabela">
+            <thead>
+              <tr><th>ID</th><th>Regional</th><th>Área</th><th>Problema</th><th>Responsável</th><th>Prev. fim</th><th>Situação</th></tr>
+            </thead>
+            <tbody id="tabelaAtencao"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
