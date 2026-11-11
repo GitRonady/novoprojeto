@@ -181,7 +181,9 @@ function desenhar() {
     const col = criar('div', 'coluna');
     const pilar = criar('div', 'pilar');
     pilar.style.height = (porMes[m] / max * 100) + '%';
-    col.append(criar('b', '', String(porMes[m])), pilar, criar('em', '', m.slice(5) + '/' + m.slice(2, 4)));
+  const partes = m.split('-');
+  const label = partes.length === 2 ? `${partes[1]}/${partes[0].slice(2)}` : m;
+  col.append(criar('b', '', String(porMes[m])), pilar, criar('em', '', label));
     gm.append(col);
   });
 
