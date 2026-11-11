@@ -50,7 +50,7 @@ async function chamarFluxo(payload, url) {
 }
 
 // ===== NORMALIZAÇÃO DOS ITENS =====
-ffunction normalizar(item) {
+function normalizar(item) {
   const sit = String(texto(pegar(item, ['Situacao', 'situacao', 'Status', 'status']))).trim().toLowerCase();
   let grupo = 'pend';
   if (sit === 'finalizado' || sit === 'concluído' || sit === 'concluido') grupo = 'fim';
