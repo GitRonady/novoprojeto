@@ -15,10 +15,11 @@
 .kpi small { display: block; color: var(--suave); font-size: 12px; font-weight: 600; }
 .kpi strong { display: block; font-size: 30px; line-height: 1.15; font-weight: 700; }
 .kpi.total { border-top-color: var(--azul); }
-.kpi.pend { border-top-color: #e0a100; } .kpi.pend strong { color: var(--laranja); }
-.kpi.and { border-top-color: var(--destaque); } .kpi.and strong { color: var(--destaque); }
-.kpi.fim { border-top-color: var(--verde); } .kpi.fim strong { color: var(--verde); }
-.kpi.atr { border-top-color: var(--vermelho); } .kpi.atr strong { color: var(--vermelho); }
+/* Cores das bordas dos cartões de cima (KPIs) */
+.kpi.pend { border-top-color: #E30613; } /* Vermelho Total */
+.kpi.and { border-top-color: #003366; } /* Azul Total */
+.kpi.fim { border-top-color: var(--verde); } /* Mantido */
+.kpi.atr { border-top-color: #E30613; } /* Vermelho para atrasados */
 
 .grade { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-bottom: 16px; }
 @media (max-width: 800px) { .grade { grid-template-columns: 1fr; } }
@@ -44,7 +45,13 @@
 /* Colunas por mês */
 .colunas { display: flex; align-items: flex-end; gap: 10px; height: 160px; padding-top: 8px; }
 .coluna { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; font-size: 11px; color: var(--suave); }
-.coluna .pilar { width: 100%; max-width: 38px; background: var(--azul); border-radius: 6px 6px 0 0; min-height: 2px; }
+.coluna .pilar { 
+    width: 100%; 
+    max-width: 38px; 
+    background: #003366; /* Azul Total Express */
+    border-radius: 6px 6px 0 0; 
+    min-height: 2px; 
+}
 .coluna b { color: var(--texto); font-size: 12px; margin-bottom: 3px; }
 .coluna em { font-style: normal; margin-top: 5px; }
 
@@ -57,4 +64,7 @@
 .tabela td.prob { min-width: 220px; }
 .tabela .vazio-td { text-align: center; color: var(--suave); padding: 18px; }
 
-.leg-pend { background: #e0a100; } .leg-and { background: var(--destaque); } .leg-fim { background: var(--verde); }
+/* Cores das fatias das barras horizontais */
+.leg-pend { background: #E30613; } 
+.leg-and { background: #003366; } 
+.leg-fim { background: var(--verde); }
