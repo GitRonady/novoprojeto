@@ -103,7 +103,11 @@ function normalizar(item) {
 //  ESTADO GLOBAL DO DASHBOARD
 
 let todos = []; // Aqui ficam todos os dados vindos do Power Automate
-const CORES = { pend: '#e0a100', and: '#2563eb', fim: '#17703a' }; // Amarelo, Azul, Verde
+const CORES = { 
+  pend: '#E30613', // Vermelho Total Express
+  and:  '#003366', // Azul Total Express
+  fim:  '#17703a'  // Verde (mantido para indicar concluído)
+};
 const ROTULOS = { pend: 'Pendente de preenchimento', and: 'Em andamento', fim: 'Concluído' };
 
 
